@@ -1,0 +1,64 @@
+{% extends 'blog/base2.html' %}
+{% load static %}
+
+{% block maincontent %}
+<div class="pcoded-inner-content">
+    <!-- Main-body start -->
+    <div class="main-body">
+        <div class="page-wrapper">
+            <!-- Page-body start -->
+            <div class="page-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- Bootstrap tab card start -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>作物から検索(農薬検索)</h5>
+                                <span>作物を指定して適用のある農薬を検索します</span>
+                            </div>
+                            <div class="card-block">
+                                <!-- Row start -->
+                                <div class="row">
+                                    <div class="col-lg-12 col-xl-12">
+                                        <form class="form-material" method="POST">
+                                            {% csrf_token %}
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">薬品種別</label>
+                                                <div class="col-sm-6">
+                                                    <select name="pest_type" class="form-control">
+                                                        <option value="opt1" {% if pest_type == 'opt1' %}selected{% endif %}>殺菌剤</option>
+                                                        <option value="opt2" {% if pest_type == 'opt2' %}selected{% endif %}>殺虫剤</option>
+                                                        <option value="opt3" {% if pest_type == 'opt3' %}selected{% endif %}>展着剤</option>
+                                                        <option value="opt4" {% if pest_type == 'opt4' %}selected{% endif %}>除草剤</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">作物名称</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="vegi_name" class="form-control" value="{{vegi_name}}">
+                                                    <span class="form-bar"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <button class="btn waves-effect waves-light btn-primary">
+                                                    <i class="icofont icofont-search"></i>
+                                                    検索
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- Row end -->
+                            </div>
+                        </div>
+                        <!-- Bootstrap tab card end -->
+                    </div>
+                </div>
+            </div>
+            <!-- Page-body end -->
+        </div>
+        <div id="styleSelector"> </div>
+    </div>
+</div>
+{% endblock %}

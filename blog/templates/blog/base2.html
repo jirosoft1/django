@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- Favicon icon -->
-    <link rel="icon" href="../files/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{% static 'mable/assets/images/favicon.ico' %}" type="image/x-icon">
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
     <!-- framework -->
@@ -73,7 +73,7 @@
                     <a class="mobile-menu waves-effect waves-light" id="mobile-collapse" href="#!">
                         <i class="ti-menu"></i>
                     </a>
-                    <a href="index.html">
+                    <a href="#!">
                         <img class="img-fluid" src="{% static 'mable/assets/images/logo.png' %}" alt="Theme-Logo" />
                     </a>
                     <a class="mobile-options waves-effect waves-light">
@@ -170,7 +170,7 @@
                         </div>
                         <div class="pcoded-navigation-label">AGRecのご紹介</div>
                         <ul class="pcoded-item pcoded-left-item">
-                            <li class="active ">
+                            <li class="{% if page1 == 'main' %}active{% endif %} ">
                                 <a href="../" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                                     <span class="pcoded-mtext">スタートページ</span>
@@ -180,15 +180,15 @@
                         </ul>
                         <div class="pcoded-navigation-label">農薬関連</div>
                         <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu ">
+                            <li class="pcoded-hasmenu {% if page1 == 'pest' %}active pcoded-trigger {% endif %}">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="ti-search"></i><b>BC</b></span>
                                     <span class="pcoded-mtext">農薬検索</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="/post/1/" class="waves-effect waves-dark">
+                                    <li class=" {% if page2 == 'search' %}active{% endif %} ">
+                                        <a href="/pestsearch/" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext">作物から検索</span>
                                             <span class="pcoded-mcaret"></span>
@@ -208,82 +208,30 @@
                 </nav>
                 <!-- 左ドロップダウン end -->
 {% endblock %}
-{% block maincontent %}
-                <div class="pcoded-content">
-                    <!-- Page-header start -->
-                    <div class="page-header">
-                        <div class="page-block">
-                            <div class="row align-items-center">
-                                <div class="col-md-8">
-                                    <div class="page-header-title">
-                                        <h5 class="m-b-10">農家支援システム AGRec</h5>
-                                        <p class="m-b-0">作業記録・防除記録・農薬検索</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <ul class="breadcrumb">
-                                        <li class="breadcrumb-item">
-                                            <a href="index.html"> <i class="fa fa-home"></i> </a>
-                                        </li>
-                                        <li class="breadcrumb-item"><a href="#!">start page</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Page-header end -->
-                    <div class="pcoded-inner-content">
-                        <!-- Main-body start -->
-                        <div class="main-body">
-                            <div class="page-wrapper">
-                                <!-- Page-body start -->
-                                <div class="page-body">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h5>農家支援システム AGRec のご紹介</h5>
-                                                    <span>小規模農家でも使いやすい農業システムサービスを目指して</span>
-                                                    <div class="card-header-right">
-                                                        <ul class="list-unstyled card-option">
-                                                            <li>
-                                                                <i class="fa fa fa-wrench open-card-option"></i>
-                                                            </li>
-                                                            <li>
-                                                                <i class="fa fa-window-maximize full-card"></i>
-                                                            </li>
-                                                            <li>
-                                                                <i class="fa fa-minus minimize-card"></i>
-                                                            </li>
-                                                            <li>
-                                                                <i class="fa fa-refresh reload-card"></i>
-                                                            </li>
-                                                            <li>
-                                                                <i class="fa fa-trash close-card"></i>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="card-block">
-                                                    <p>
-                                                        "小規模農家でも手軽に簡単に利用できる農業システムを目指して開発しています。
-                                                        現在は農薬検索システムのみ稼働しています。そのほかにも作業記録・防除記録・作物別収支計算などの
-                                                        追加を考えています。まだアルファバージョンです。"
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Page-body end -->
-                            </div>
-                            <div id="styleSelector"> </div>
-                        </div>
+
+{% block pageheader %}
+<div class="pcoded-content">
+    <!-- Page-header start -->
+    <div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="page-header-title">
+                        <h5 class="m-b-10">農家支援システム AGRec</h5>
+                        <p class="m-b-0">作業記録・防除記録・農薬検索</p>
                     </div>
                 </div>
-{% endblock %}
-
-{% block menu %}
-<div>MENU</div>
+                <div class="col-md-4">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html"> <i class="fa fa-home"></i> </a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#!">start page</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page-header end -->
 {% endblock %}

@@ -1,2 +1,55 @@
 {% extends 'blog/base2.html' %}
+{% load static %}
+
+{% block maincontent %}
+    <div class="pcoded-inner-content">
+        <!-- Main-body start -->
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- Page-body start -->
+                <div class="page-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>農家支援システム AGRec のご紹介</h5>
+                                    <span>小規模農家でも使いやすい農業システムサービスを目指して</span>
+                                    <div class="card-header-right">
+                                        <ul class="list-unstyled card-option">
+                                            <li>
+                                                <i class="fa fa fa-wrench open-card-option"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-window-maximize full-card"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-minus minimize-card"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-refresh reload-card"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-trash close-card"></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-block">
+                                    <p>
+                                        "小規模農家でも手軽に簡単に利用できる農業システムを目指して開発しています。
+                                        現在は農薬検索システムのみ稼働しています。そのほかにも作業記録・防除記録・作物別収支計算などの
+                                        追加を考えています。まだアルファバージョンです。"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Page-body end -->
+            </div>
+            <div id="styleSelector"> </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
 
