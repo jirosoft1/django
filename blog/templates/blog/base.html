@@ -1,25 +1,32 @@
 {% load static %}
-<html>
-    <head>
-        <title>Jiro's Blog</title>
-        <link rel='stylesheet' href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel='stylesheet' href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link rel='stylesheet' href="{% static 'css/blog.css' %}">
-    </head>
-    <body>
-        <div class="page-header">
-            <h1><a href="/">Jiro's BLOG</a></h1>
-        </div>
+<!DOCTYPE html>
+<html lang="ja">
 
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                    {% block content %}
+<head>
+    {% block header %}
+    {% endblock %}
+
+</head>
+    <body>
+        {% block pre-load %}
+        {% endblock %}
+
+        <div id="pcoded" class="pcoded">
+            <div class="pcoded-overlay-box"></div>
+            <div class="pcoded-container navbar-wrapper">
+                {% block bheader %}
+                {% endblock %}
+                <div class="pcoded-main-container">
+                    <div class="pcoded-wrapper">
+                    {% block leftmenu %}
                     {% endblock %}
+
+                    {% block maincontent %}
+                    {% endblock %}
+                    </div>
                 </div>
-            </div> 
-        </div> 
-          
+            </div>
+        </div>
 
     </body>
 </html>
