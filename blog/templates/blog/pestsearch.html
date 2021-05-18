@@ -26,10 +26,10 @@
                                                 <label class="col-sm-2 col-form-label">薬品種別</label>
                                                 <div class="col-sm-6">
                                                     <select name="pest_type" class="form-control">
-                                                        <option value="opt1" {% if pest_type == 'opt1' %}selected{% endif %}>殺菌剤</option>
-                                                        <option value="opt2" {% if pest_type == 'opt2' %}selected{% endif %}>殺虫剤</option>
-                                                        <option value="opt3" {% if pest_type == 'opt3' %}selected{% endif %}>展着剤</option>
-                                                        <option value="opt4" {% if pest_type == 'opt4' %}selected{% endif %}>除草剤</option>
+                                                        <option value="殺菌剤" {% if pest_type == '殺菌剤' %}selected{% endif %}>殺菌剤</option>
+                                                        <option value="殺虫剤" {% if pest_type == '殺虫剤' %}selected{% endif %}>殺虫剤</option>
+                                                        <option value="展着剤" {% if pest_type == '展着剤' %}selected{% endif %}>展着剤</option>
+                                                        <option value="除草剤" {% if pest_type == '除草剤' %}selected{% endif %}>除草剤</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -51,6 +51,7 @@
                                 </div>
                                 <!-- Row end -->
                             </div>
+                            {% if mode == 'POST' %}
                             <div class="card-header">
                                 <h5>検索結果</h5>
                             </div>
@@ -62,88 +63,18 @@
                                                 <th>登録番号</th>
                                                 <th>農薬名</th>
                                                 <th>農薬の用途</th>
-                                                <th>農薬の成分</th>
+                                                <th>適用農作物</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for pestdet in pestdets %}
                                             <tr>
-                                                <td>90</td>
-                                                <td>カヤククロールピクリン</td>
-                                                <td>殺虫剤</td>
-                                                <td>クロルピクリンくん蒸剤</td>
+                                                <td>{{pestdet.T_No}}</td>
+                                                <td>{{pestdet.PestName}}</td>
+                                                <td>{{pestdet.Youto}}</td>
+                                                <td>{{pestdet.VegiName}}</td>
                                             </tr>
-                                            <tr>
-                                                <td>2280</td>
-                                                <td>日農マラソン乳剤</td>
-                                                <td>殺虫剤</td>
-                                                <td>マラソン乳剤</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2300</td>
-                                                <td>ホクコーマラソン乳剤</td>
-                                                <td>殺虫剤</td>
-                                                <td>マラソン乳剤</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2532</td>
-                                                <td>サンケイマラソン乳剤</td>
-                                                <td>殺虫剤</td>
-                                                <td>マラソン乳剤</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4250</td>
-                                                <td>日本火薬ダイアジノン水和剤３４</td>
-                                                <td>殺虫剤</td>
-                                                <td>ダイアジノン水和剤</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4262</td>
-                                                <td>日農ダイアジノン水和剤３４</td>
-                                                <td>殺虫剤</td>
-                                                <td>ダイアジノン水和剤</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4962</td>
-                                                <td>住化スミチオン乳剤</td>
-                                                <td>殺虫剤</td>
-                                                <td>ＭＥＰ乳剤</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4982</td>
-                                                <td>日産スミチオン乳剤</td>
-                                                <td>殺虫剤</td>
-                                                <td>ＭＥＰ乳剤</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4991</td>
-                                                <td>ホクコースミチオン乳剤</td>
-                                                <td>殺虫剤</td>
-                                                <td>ＭＥＰ乳剤</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5042</td>
-                                                <td>日農スミチオン乳剤</td>
-                                                <td>殺虫剤</td>
-                                                <td>ＭＥＰ乳剤</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5052</td>
-                                                <td>サンケイスミチオン乳剤</td>
-                                                <td>殺虫剤</td>
-                                                <td>ＭＥＰ乳剤</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5250</td>
-                                                <td>ドロクロール</td>
-                                                <td>殺虫剤</td>
-                                                <td>クロルピクリンくん蒸剤</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5329</td>
-                                                <td>ドジョウピクリン</td>
-                                                <td>殺虫剤</td>
-                                                <td>クロルピクリンくん蒸剤</td>
-                                            </tr>
+                                            {% endfor %}
                                         </tfoot>
                                     </table>
                                 </div>
@@ -151,6 +82,7 @@
                             <!-- Default ordering table end -->
                         </div>
                         <!-- Bootstrap tab card end -->
+                        {% endif %}
                     </div>
                 </div>
             </div>
